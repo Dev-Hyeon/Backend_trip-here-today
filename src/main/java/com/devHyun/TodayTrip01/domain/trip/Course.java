@@ -16,6 +16,9 @@ import java.util.List;
 @Entity
 public class Course {
 
+    public static List<Spot> spotList = new ArrayList<>();
+
+
     @Id
     @GeneratedValue
     @Column(name = "COURSE_ID")
@@ -36,4 +39,15 @@ public class Course {
     private Trip trip;
 
 
+    public void setSpot(Spot spot) {
+        this.spot = spot;
+    }
+
+    public void setTrip(Trip trip) {
+        this.trip = trip;
+    }
+
+    public static void addCourse(Spot spot) {
+        spotList.add(spot);
+    }
 }
