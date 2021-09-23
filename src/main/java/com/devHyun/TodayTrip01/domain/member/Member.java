@@ -1,6 +1,5 @@
 package com.devHyun.TodayTrip01.domain.member;
 
-import com.devHyun.TodayTrip01.domain.trip.Trip;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +22,5 @@ public class Member {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "member")
-    private List<Trip> trips = new ArrayList<>();
 
 }
