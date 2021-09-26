@@ -36,3 +36,5 @@ out/
 ### Script ###
 *.out
 run.sh
+
+application.yml
