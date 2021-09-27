@@ -5,16 +5,19 @@ import com.devHyun.TodayTrip01.domain.user.User;
 import com.devHyun.TodayTrip01.domain.user.UserRepository;
 import com.devHyun.TodayTrip01.web.dto.member.JoinDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityExistsException;
+
 
 @RequiredArgsConstructor
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
 
     /**
@@ -32,18 +35,16 @@ public class UserService {
 
         
         // 1. 중복확인
-        if(!duplicateUsername(user)){
-
-        }
-        throw new Exception("현재 사용중인 USERNAME 입니다.");
+        duplicateUsername(user);
 
     }
 
-    // 중복확인
-    private Boolean duplicateUsername(User user) {
+    
+    private void duplicateUsername(User user) throws Exception {
 
-        return userRepository.existsByUsername(user.getUsername());
-
+        if (userRepository.existsByUsername(user.getUsername())) {
+            throw new Exception("현재 사용중인 USERNAME 입니다.");
+        }
     }
 
 }
