@@ -18,8 +18,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
-
+    
     /**
      * 회원가입
      * 1. 중복확인(username)
@@ -33,12 +32,12 @@ public class UserService {
 
         User user = joinDto.toEntity();
 
-        
         // 1. 중복확인
         duplicateUsername(user);
         // 2. 비밀번호 암호화
         bcryptPw(user);
-
+        // 3. 영속화
+        userRepository.save(user);
 
     }
 

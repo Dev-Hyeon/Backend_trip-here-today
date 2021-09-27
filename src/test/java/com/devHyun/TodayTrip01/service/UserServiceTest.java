@@ -55,6 +55,23 @@ class UserServiceTest {
         Assertions.assertThat(user.getPassword()).isNotEqualTo("1234");
     }
 
+    @DisplayName("회원가입")
+    @Test
+    public void joinUserTest() throws Exception{
+        //given
+        JoinDto joinDto = createJoinDto();
+
+
+        //when
+        userService.join(joinDto);
+
+        //then
+        Assertions.assertThat(userRepository.count()).isEqualTo(1l);
+
+    }
+
+
+
 
     private JoinDto createJoinDto() {
 
