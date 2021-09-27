@@ -31,4 +31,7 @@ public class User {
     private String name;
 
 
+    public void bcryptPw(String encode) {
+        password = encode;
+    }
 }

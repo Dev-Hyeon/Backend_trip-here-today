@@ -25,7 +25,7 @@ class UserServiceTest {
     
     @DisplayName("username 중복확인")
     @Test
-    public void duplicateUsername() throws Exception{
+    public void duplicateUsernameTest() throws Exception{
         //given
         JoinDto joinDto1 = createJoinDto();
         JoinDto joinDto2 = createJoinDto();
@@ -41,6 +41,21 @@ class UserServiceTest {
 
     }
 
+    @DisplayName("비밀번호 암호화")
+    @Test
+    public void bcryptPwTest() throws Exception{
+        //given
+        JoinDto joinDto = createJoinDto();
+        User user = joinDto.toEntity();
+
+        //when
+        userService.bcryptPw(user);
+
+        //then
+        Assertions.assertThat(user.getPassword()).isNotEqualTo("1234");
+    }
+
+
     private JoinDto createJoinDto() {
 
         JoinDto joinDto = new JoinDto();
@@ -51,5 +66,10 @@ class UserServiceTest {
 
         return joinDto;
     }
+
+
+
+
+
 
 }

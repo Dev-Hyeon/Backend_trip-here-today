@@ -36,7 +36,16 @@ public class UserService {
         
         // 1. 중복확인
         duplicateUsername(user);
+        // 2. 비밀번호 암호화
+        bcryptPw(user);
 
+
+    }
+
+
+    protected void bcryptPw(User user) {
+        String encode = bCryptPasswordEncoder.encode(user.getPassword());
+        user.bcryptPw(encode);
     }
 
     
