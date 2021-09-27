@@ -12,12 +12,14 @@ import javax.persistence.*;
 @Entity
 public class User {
 
+    private static final int MAX_LENGTH = 20;
+
     @Id
     @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
 
-    @Column(length = 50, unique = true)
+    @Column(length = MAX_LENGTH, unique = true)
     private String username;
 
     @Column(nullable = false)
