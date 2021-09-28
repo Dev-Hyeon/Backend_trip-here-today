@@ -1,7 +1,8 @@
 package com.devHyun.TodayTrip01.domain.course;
 
-import com.devHyun.TodayTrip01.domain.member.Member;
-import com.devHyun.TodayTrip01.domain.spot.Spot;
+
+
+import com.devHyun.TodayTrip01.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +26,7 @@ public class Course {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
-    private Member member;
+    private User user;
 
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
